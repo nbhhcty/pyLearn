@@ -1,17 +1,15 @@
-
-
-# 参考链接：https://blog.csdn.net/dodouaj/article/details/54908665
-
 #coding=utf-8
 from urllib import quote
 import urllib2 as urllib
 import re
 import os
 
-
+# 参考链接：https://blog.csdn.net/dodouaj/article/details/54908665
 class BaiduImage():
 
     def __init__(self, keyword, count=2000, save_path="img", rn=60):
+        print("保存路径 = " + save_path)
+
         self.keyword = keyword
         self.count = count
         self.save_path = save_path
@@ -51,14 +49,14 @@ class BaiduImage():
         for image in image_url_list:
             host = self.get_url_host(image)
             self.headers["Host"] = host
-
+            print("图片url = %s"%image)
             with open(self.save_path + "/%s.jpg" % self.__totleCount, "wb") as p:
                 try:
                     req = urllib.Request(image, headers=self.headers)
                     # 设置一个urlopen的超时，如果10秒访问不到，就跳到下一个地址，防止程序卡在一个地方。
                     img = urllib.urlopen(req, timeout=20)
-                    p.write(img.read())
-                    p.close()
+                    # p.write(img.read())
+                    # p.close()
                     self.__totleCount += 1
                 except Exception as e:
                     print "Exception" + str(e)

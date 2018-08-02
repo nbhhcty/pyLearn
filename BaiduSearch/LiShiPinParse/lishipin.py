@@ -1,11 +1,10 @@
-
-# 获取梨视频视频地址
 #coding=utf-8
 import requests
 import urllib
 from lxml import etree
 import re
 
+# 获取梨视频视频地址
 #1 获取视频id
 #2 拼接完整URL
 #3 获取视频播放地址
